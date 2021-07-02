@@ -11,7 +11,7 @@
         :to="`/qr/${key}`"
         class="text-xl m-3 py-5 w-11/12 sm:w-96 bg-gray-100 text-center rounded-full font-bold"
       >
-        {{ value.title || 'sheh' }}
+        {{ value.title || 'nop' }}
       </nuxt-link>
     </template>
     <nuxt-link v-else to="/new" class="bg-blue-500 text-white m-5 px-5 py-2 rounded-xl">
@@ -20,7 +20,7 @@
 
     <footer class="fixed bottom-0 flex justify-center items-center">
       <button class="bg-blue-500 text-white m-5 px-5 py-2 rounded-xl" @click="clear">
-        Update QR Code
+        Add a new QR Code
       </button>
     </footer>
   </main>
