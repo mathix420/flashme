@@ -54,7 +54,14 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta: {
+      name: 'FlashMe',
+      mobileAppIOS: true,
+      theme_color: '#ffffff',
+      ogHost: 'https://flashme.vercel.app/'
+    },
     manifest: {
+      name: 'FlashMe',
       lang: 'en'
     }
   },

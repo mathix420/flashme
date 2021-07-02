@@ -2,6 +2,12 @@
   "name": "flashme",
   "version": "1.0.0",
   "private": true,
+  "description": "QR Code wallet PWA. Ideal for COVID Passport!",
+  "author": {
+    "name": "Arnaud Gissinger",
+    "email": "agissing@student.42.fr",
+    "url": "https://mathix.ninja/"
+  },
   "scripts": {
     "dev": "nuxt -H 0",
     "build": "nuxt build",
