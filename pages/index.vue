@@ -37,7 +37,9 @@ export default {
   },
   mounted () {
     entries()
-      .then(entries => (this.entries = entries))
+      .then((entries) => {
+        this.entries = entries.sort((a, b) => (a[1].ts || 0) - (b[1].ts || 0))
+      })
       .catch(e => alert(e))
   },
   methods: {

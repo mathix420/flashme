@@ -70,7 +70,8 @@ export default {
       }
       set(uuidv4(), {
         title,
-        data
+        data,
+        ts: new Date().getTime()
       }).then(() => {
         this.$nuxt.$router.push('/')
       }).catch(alert)
