@@ -1,37 +1,43 @@
 <template>
   <main class="flex flex-col justify-center items-center py-10">
-    <canvas ref="code"></canvas>
+    <h1 class="text-3xl font-black mb-10">FlashMe v1</h1>
 
-    <button class="bg-blue-500 text-white m-5 px-5 py-2 rounded-xl fixed bottom-0" @click="clear">
-      Update QR Code
-    </button>
+    <template v-if="entries.length">
+      <nuxt-link v-for="[key, value] in entries" :key="key" :to="`/qr/${key}`"
+        class="text-xl m-3 py-5 w-11/12 sm:w-96 bg-gray-100 text-center rounded-full font-bold">
+        {{ value.title || 'sheh' }}
+      </nuxt-link>
+    </template>
+    <nuxt-link v-else to="/new" class="bg-blue-500 text-white m-5 px-5 py-2 rounded-xl">
+      Add your first QR Code!
+    </nuxt-link>
+
+    <footer class="fixed bottom-0 flex justify-center items-center">
+      <button class="bg-blue-500 text-white m-5 px-5 py-2 rounded-xl" @click="clear">
+        Update QR Code
+      </button>
+    </footer>
   </main>
 </template>
 
 <script>
+import { entries } from 'idb-keyval';
+
 export default {
   data() {
     return {
-      data: null,
+      entries: [],
     }
   },
   mounted() {
-    this.data = localStorage.getItem('flashme-sorage');
-    if (!this.data) return this.$nuxt.$router.push('/load')
-
-    this.$QrGen.render({
-        text: this.data,
-        radius: 0.5, // 0.0 to 0.5
-        ecLevel: 'L', // L, M, Q, H
-        fill: '#000', // foreground color
-        background: null, // color or null for transparent
-        size: Math.min(window.innerWidth - 50, 512) // in pixels
-      }, this.$refs.code);
+    entries()
+      .then(entries => (this.entries = entries))
+      .catch(e => alert(e))
   },
   methods: {
     clear() {
       localStorage.removeItem('flashme-sorage');
-      this.$nuxt.$router.push('/load')
+      this.$nuxt.$router.push('/new')
     }
   }
 }
