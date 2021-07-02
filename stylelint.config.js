@@ -1,6 +1,6 @@
 module.exports = {
   plugins: ['stylelint-scss'],
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
+  extends: ['stylelint-config-standard'],
   // https://stylelint.io/user-guide/configuration
   rules: {
     'no-empty-source': null,
@@ -8,8 +8,8 @@ module.exports = {
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep'],
-      },
-    ],
-  },
+        ignorePseudoElements: ['v-deep']
+      }
+    ]
+  }
 }

@@ -1,10 +1,16 @@
 <template>
   <main class="flex flex-col justify-center items-center py-10">
-    <h1 class="text-3xl font-black mb-10">FlashMe v1</h1>
+    <h1 class="text-3xl font-black mb-10">
+      FlashMe v1
+    </h1>
 
     <template v-if="entries.length">
-      <nuxt-link v-for="[key, value] in entries" :key="key" :to="`/qr/${key}`"
-        class="text-xl m-3 py-5 w-11/12 sm:w-96 bg-gray-100 text-center rounded-full font-bold">
+      <nuxt-link
+        v-for="[key, value] in entries"
+        :key="key"
+        :to="`/qr/${key}`"
+        class="text-xl m-3 py-5 w-11/12 sm:w-96 bg-gray-100 text-center rounded-full font-bold"
+      >
         {{ value.title || 'sheh' }}
       </nuxt-link>
     </template>
@@ -21,22 +27,22 @@
 </template>
 
 <script>
-import { entries } from 'idb-keyval';
+import { entries } from 'idb-keyval'
 
 export default {
-  data() {
+  data () {
     return {
-      entries: [],
+      entries: []
     }
   },
-  mounted() {
+  mounted () {
     entries()
       .then(entries => (this.entries = entries))
       .catch(e => alert(e))
   },
   methods: {
-    clear() {
-      localStorage.removeItem('flashme-sorage');
+    clear () {
+      localStorage.removeItem('flashme-sorage')
       this.$nuxt.$router.push('/new')
     }
   }

@@ -1,8 +1,10 @@
 <template>
   <main class="flex flex-col justify-center items-center py-10">
-    <h1 class="text-3xl font-black mb-10">{{ title }}</h1>
+    <h1 class="text-3xl font-black mb-10">
+      {{ title }}
+    </h1>
 
-    <canvas ref="code" class="mt-10"></canvas>
+    <canvas ref="code" class="mt-10" />
 
     <footer class="fixed bottom-0 flex justify-center items-center">
       <button class="bg-red-700 text-white m-5 px-5 py-2 rounded-xl" @click="deleteQr">
@@ -16,22 +18,22 @@
 </template>
 
 <script>
-import { get, del } from 'idb-keyval';
+import { get, del } from 'idb-keyval'
 
 export default {
-  data() {
+  data () {
     return {
       data: null,
-      title: null,
+      title: null
     }
   },
-  head() {
+  head () {
     return {
-      title: this.title,
+      title: this.title
     }
   },
-  async mounted() {
-    await get(this.$route.params.id).then(data => {
+  async mounted () {
+    await get(this.$route.params.id).then((data) => {
       this.data = data.data
       this.title = data.title
     }).catch(() => {
@@ -45,10 +47,10 @@ export default {
       fill: '#000', // foreground color
       background: null, // color or null for transparent
       size: Math.min(window.innerWidth - 50, 512) // in pixels
-    }, this.$refs.code);
+    }, this.$refs.code)
   },
   methods: {
-    deleteQr() {
+    deleteQr () {
       if (confirm('Are you sure?')) {
         del(this.$route.params.id).then(() => this.$router.push('/'))
       }
