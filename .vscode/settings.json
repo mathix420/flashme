@@ -1,0 +1,20 @@
+{
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true
+    },
+    "eslint.options": {
+        "configFile": ".eslintrc.js",
+    },
+    "files.exclude": {
+        // "node_modules/": true,
+        ".nuxt/": true,
+        "dist/": true,
+        ".dockerignore": true,
+        ".eslintcache": true,
+        ".eslintignore": true,
+        "jsconfig.json": true
+    },
+    "svg.preview.background": "custom"
+}
